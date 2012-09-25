@@ -1,7 +1,7 @@
 pam\_notifo
 ==========
  
-This project (based on work from Robert Harder; http://iharder.sourceforge.net/current/macosx/pam\_notifo/), which will allow the pam system to send notifications via the Notifo service.
+This project (based on work from Robert Harder; http://iharder.sourceforge.net/current/macosx/pam_notifo/), which will allow the pam system to send notifications via the Notifo service.
  
 Configuration
 =============
