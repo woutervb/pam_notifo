@@ -9,14 +9,14 @@ Edit the pam configuration file of the service you with to receive notifications
 
     session    optional       pam_notifo.so notifo_user=johndoe notifo_api_key=062c10a7b43cb9b6634dfdc20b37e070
  
-Building
-========
-Simply checkout this project from git and run make. Copy the resulting pam\_notifo.so to the appropriate place, next to other pam modules on your system
+Building & Installing
+=====================
+Simply checkout this project from git and run make.
+ 
+To install run make install
  
 TODO
 ====
-* Build configure script to find out where the pam module should be installed
-* Create a install target for the Makefile
 * Better testing on other platforms then ubuntu 12.04
   
 License
