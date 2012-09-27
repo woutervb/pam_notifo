@@ -24,7 +24,7 @@ int __notifo_response( void *ptr, size_t size, size_t nmemb, void *userdata){
 /**
  * Sends a Notifo notification.
  */
-int curl_notifo( const char *username, const char *apiKey, char *label, char *title, char *message, char *url ){
+int curl_notifo( const char *username, const char *apiKey, char *to, char *label, char *title, char *message, char *url ){
 
     char userApi[500];
     int ret;
@@ -49,6 +49,9 @@ int curl_notifo( const char *username, const char *apiKey, char *label, char *ti
         curl_easy_setopt(curl, CURLOPT_USERPWD, userApi);           // Set the username and API key
 
         // Set up the POST data with the Notifo notification information
+        if( to ){
+            curl_formadd(&formpost, &lastptr, CURLFORM_COPYNAME, NOTIFO_TO_KEY, CURLFORM_COPYCONTENTS, to, CURLFORM_END);
+        }
         if( label ){
             curl_formadd(&formpost, &lastptr, CURLFORM_COPYNAME, NOTIFO_LABEL_KEY, CURLFORM_COPYCONTENTS, label, CURLFORM_END);
         }

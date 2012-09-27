@@ -24,6 +24,7 @@ typedef struct _pns {
     int debug;
      char *notifo_user;
      char *notifo_api_key;
+     char *notifo_to;
 } pam_notifo_s;
 
 static void parse_args(int argc, const char **argv, pam_notifo_s *pns)
@@ -45,6 +46,10 @@ static void parse_args(int argc, const char **argv, pam_notifo_s *pns)
         if (strncmp(opt, "notifo_api_key=", 15) == 0) {
 	    if (pns->notifo_api_key) free (pns->notifo_api_key);
 	    pns->notifo_api_key = strdup(&opt[15]);
+	};
+        if (strncmp(opt, "notifo_to=", 10) == 0) {
+	    if (pns->notifo_to) free (pns->notifo_to);
+	    pns->notifo_to = strdup(&opt[10]);
 	};
 
     }
@@ -82,7 +87,7 @@ int pam_sm_open_session(pam_handle_t *pamh, int flags,
   pam_service );
 
     // Send Notifo notification
-    curl_notifo(pns->notifo_user, pns->notifo_api_key, hostname, "User Logged In", notifoMessage, NULL);
+    curl_notifo(pns->notifo_user, pns->notifo_api_key, pns->notifo_to, hostname, "User Logged In", notifoMessage, NULL);
    
     return PAM_SUCCESS;
 

@@ -3,11 +3,13 @@ pam\_notifo
  
 This project (based on work from Robert Harder; http://iharder.sourceforge.net/current/macosx/pam_notifo/), which will allow the pam system to send notifications via the Notifo service.
  
+To use this module one needs to create a 'service' at notifo, and use the service name and key below. After that, the notif\_to paramete has to point to a 'notifo' account that is (or will be) subscribed to the service.
+ 
 Configuration
 =============
 Edit the pam configuration file of the service you with to receive notifications from, using your favorite editor and add a line like the one below:
 
-    session    optional       pam_notifo.so notifo_user=johndoe notifo_api_key=062c10a7b43cb9b6634dfdc20b37e070
+    session    optional       pam_notifo.so notifo_user=johndoe notifo_api_key=062c10a7b43cb9b6634dfdc20b37e070 notifo_to=user
  
 Building & Installing
 =====================
@@ -17,6 +19,7 @@ To install run make install
  
 TODO
 ====
+* Implement error checking on missing / wrong parameters and function call failure
 * Better testing on other platforms then ubuntu 12.04
   
 License
