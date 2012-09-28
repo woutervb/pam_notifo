@@ -11,6 +11,7 @@
 #define NOTIFO_MESSAGE_KEY "msg"
 #define NOTIFO_URL_KEY "url"
 
-int curl_notifo( const char *username, const char *apiKey, char *to, char *label, char *title, char *message, char *url );
+int curl_notifo (const char *username, const char *apiKey, char *to,
+		 char *label, char *title, char *message, char *url);
 
 #endif
