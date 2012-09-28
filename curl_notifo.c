@@ -18,7 +18,7 @@
  * Receives the response from CURL (and silently ignores it).
  */
 int __notifo_response( void *ptr, size_t size, size_t nmemb, void *userdata){
-    return size * nmemb;
+    return (size * nmemb);
 }
 
 /**
@@ -34,11 +34,11 @@ int curl_notifo( const char *username, const char *apiKey, char *to, char *label
     struct curl_httppost *lastptr=NULL;     // Linked list for POST data
 
     if( username == NULL || apiKey == NULL ){
-        return 2;
+        return (2);
     } else {
         ret = snprintf( userApi, 500, "%s:%s", username, apiKey );
-        if( ret < 0 ){ return 3; }
-        if( ret >= 500 ){ return 4; }
+        if( ret < 0 ){ return (3); }
+        if( ret >= 500 ){ return (4); }
     }
     curl = curl_easy_init();
     if(curl) {
@@ -74,9 +74,9 @@ int curl_notifo( const char *username, const char *apiKey, char *to, char *label
         // Always clean up
         curl_easy_cleanup(curl);
 
-        return res;
+        return (res);
     } else {
-        return -1; // CURL not inited properly
+        return (-1); // CURL not inited properly
     }
 }
 

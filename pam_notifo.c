@@ -57,7 +57,7 @@ static void parse_args(int argc, const char **argv, pam_notifo_s *pns)
 
 static pam_notifo_s *
 pns_create() {
-	return calloc(1, sizeof(pam_notifo_s));
+	return (calloc(1, sizeof(pam_notifo_s)));
 }
 
 int pam_sm_open_session(pam_handle_t *pamh, int flags,
@@ -89,13 +89,13 @@ int pam_sm_open_session(pam_handle_t *pamh, int flags,
     // Send Notifo notification
     curl_notifo(pns->notifo_user, pns->notifo_api_key, pns->notifo_to, hostname, "User Logged In", notifoMessage, NULL);
    
-    return PAM_SUCCESS;
+    return (PAM_SUCCESS);
 
 };
 
 int pam_sm_close_session (pam_handle_t *pamh , int flags ,
                       int argc , const char **argv )
 {
-  return PAM_SUCCESS;
+  return (PAM_SUCCESS);
 };
 
